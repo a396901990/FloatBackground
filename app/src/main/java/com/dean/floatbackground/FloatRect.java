@@ -22,7 +22,7 @@ public class FloatRect extends FloatObject {
         setColor(Color.WHITE);
     }
     @Override
-    public void drawFloatObject(Canvas canvas, int x, int y, Paint paint) {
+    public void drawFloatObject(Canvas canvas, float x, float y, Paint paint) {
         RectF f = new RectF(x-width/8, y-width, x+width/8, y+width);
         canvas.drawRect(f, paint);
     }

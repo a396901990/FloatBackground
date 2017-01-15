@@ -16,7 +16,7 @@ public class FloatCircle extends FloatObject {
     }
 
     @Override
-    public void drawFloatObject(Canvas canvas, int x, int y, Paint paint) {
+    public void drawFloatObject(Canvas canvas, float x, float y, Paint paint) {
         canvas.drawCircle(x, y, 10, paint);
     }
 }

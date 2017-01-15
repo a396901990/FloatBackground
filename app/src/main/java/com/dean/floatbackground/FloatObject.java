@@ -2,7 +2,10 @@ package com.dean.floatbackground;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.PointF;
+import android.util.Log;
 
 import java.util.Random;
 
@@ -24,14 +27,17 @@ public abstract class FloatObject {
 
     private int width;
     private int height;
-    private int x;
-    private int y;
+    private float x;
+    private float y;
     private int alpha;
 
     private float distance = 500;
     private float mCurDistance = 0;
 
-    private Point start, end, c1, c2;
+    private PointF start;
+    private Point end;
+    private Point c1;
+    private Point c2;
     private Random random = new Random();
     private Paint paint = new Paint();
 
@@ -45,7 +51,7 @@ public abstract class FloatObject {
         this.posY = posY;
     }
 
-    public abstract void drawFloatObject(Canvas canvas, int x, int y, Paint paint);
+    public abstract void drawFloatObject(Canvas canvas, float x, float y, Paint paint);
 
     public void init(int x, int y, int width, int height) {
         this.x = x;
@@ -72,14 +78,14 @@ public abstract class FloatObject {
             case MOVE:
                 // 更新赛贝尔曲线点
                 if (mCurDistance == 0) {
-                    start = new Point(x, y);
-                    end = getRandomPoint(start.x, start.y, (int) distance);// 取值范围distance
-                    c1 = getRandomPoint(start.x, start.y, random.nextInt(width / 2)); // 取值范围width/2
+                    start = new PointF(x, y);
+                    end = getRandomPoint((int)start.x, (int)start.y, (int) distance);// 取值范围distance
+                    c1 = getRandomPoint((int)start.x, (int)start.y, random.nextInt(width / 2)); // 取值范围width/2
                     c2 = getRandomPoint(end.x, end.y, random.nextInt(width / 2));// 取值范围width/2
                 }
 
                 // 计算塞贝儿曲线的当前点
-                Point bezierPoint = CalculateBezierPoint(mCurDistance / distance, start, c1, c2, end);
+                PointF bezierPoint = CalculateBezierPoint(mCurDistance / distance, start, c1, c2, end);
                 x = bezierPoint.x;
                 y = bezierPoint.y;
 
@@ -103,6 +109,7 @@ public abstract class FloatObject {
         }
 
         if (status != FINISH) {
+            Log.e("drawFloatObject", x+", "+y);
             drawFloatObject(canvas, x ,y, paint);
         }
     }
@@ -117,14 +124,14 @@ public abstract class FloatObject {
      * @param e  终点
      * @return 塞贝儿曲线在当前时间下的点
      */
-    private Point CalculateBezierPoint(float t, Point s, Point c1, Point c2, Point e) {
+    private PointF CalculateBezierPoint(float t, PointF s, Point c1, Point c2, Point e) {
         float u = 1 - t;
         float tt = t * t;
         float uu = u * u;
         float uuu = uu * u;
         float ttt = tt * t;
 
-        Point p = new Point((int) (s.x * uuu), (int) (s.y * uuu));
+        PointF p = new PointF((s.x * uuu), (s.y * uuu));
         p.x += 3 * uu * t * c1.x;
         p.y += 3 * uu * t * c1.y;
         p.x += 3 * u * tt * c2.x;

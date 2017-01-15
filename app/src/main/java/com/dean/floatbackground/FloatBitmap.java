@@ -26,7 +26,7 @@ public class FloatBitmap extends FloatObject {
     }
 
     @Override
-    public void drawFloatObject(Canvas canvas, int x, int y, Paint paint) {
+    public void drawFloatObject(Canvas canvas, float x, float y, Paint paint) {
         int width = 40;
         canvas.drawBitmap(bitmap, x, y, paint);
     }

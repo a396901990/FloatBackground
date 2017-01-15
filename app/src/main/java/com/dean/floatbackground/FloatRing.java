@@ -21,7 +21,7 @@ public class FloatRing extends FloatObject {
     }
 
     @Override
-    public void drawFloatObject(Canvas canvas, int x, int y, Paint paint) {
+    public void drawFloatObject(Canvas canvas, float x, float y, Paint paint) {
         paint.setStrokeWidth(strokeWidth);
         paint.setStyle(Paint.Style.STROKE);
         canvas.drawCircle(x, y, ridus, paint);
