@@ -156,9 +156,20 @@ public abstract class FloatObject {
         x = baseX + getRandomPNValue(x);
         y = baseY + getRandomPNValue(y);
 
-        if (x > width || x < 0 || y > height || y < 0) {
-            return getRandomPoint(baseX, baseY, r);
+//        if (x > width || x < 0 || y > height || y < 0) {
+//            return getRandomPoint(baseX, baseY, r);
+//        }
+
+        if (x > width) {
+            x = width - r;
+        } else if (x < 0) {
+            x = r;
+        } else if (y > height) {
+            y = height - r;
+        } else if (y < 0) {
+            y = r;
         }
+
         return new Point(x, y);
     }
 
