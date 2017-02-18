@@ -1,4 +1,4 @@
-package com.dean.floatbackground;
+package com.dean.library;
 
 import android.content.Context;
 import android.graphics.Canvas;

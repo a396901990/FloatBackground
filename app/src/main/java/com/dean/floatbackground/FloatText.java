@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import com.dean.library.FloatObject;
+
 /**
  * Created by DeanGuo on 1/7/17.
  */

@@ -7,7 +7,7 @@
     android:background="@drawable/ico_background_loading"
     tools:context="com.dean.floatbackground.MainActivity">
 
-    <com.dean.floatbackground.FloatBackground
+    <com.dean.library.FloatBackground
         android:id="@+id/float_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -32,5 +32,5 @@
                 android:layout_gravity="center"
                 android:text="End" />
         </LinearLayout>
-    </com.dean.floatbackground.FloatBackground>
+    </com.dean.library.FloatBackground>
 </RelativeLayout>

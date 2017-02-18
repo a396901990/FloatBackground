@@ -1,8 +1,7 @@
-package com.dean.floatbackground;
+package com.dean.library;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.util.Log;
