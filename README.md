@@ -1,7 +1,7 @@
 # FloatBackground  
 
-Floating item in background  
-在背景上悬浮物体  
+Floating item in background, support text, iamge, custom view  
+在背景上悬浮物体，并自由随机移动，支持文字，图片，自定义画图  
 
 ## 预览图 Screenshots
 ![demo1](/screenshot/floatbackground.gif) 
