@@ -49,6 +49,7 @@ FloatBackground is inhert from FrameLayout, add `FloatBackground` to your layout
 
 #### FloatObject  
 漂浮对象，初始化漂浮对象，继承FloatObject，并重写drawFloatObject方法。
+FloatObject is a base class to create "Floating object" on FloatBackground. need to overwrite drawFloatObject method.
 ```
 public class FloatText extends FloatObject {
     String text;
@@ -68,10 +69,22 @@ public class FloatText extends FloatObject {
 }
 ```
 
-#### 将FloatObject添加到FloatBackground
+#### 将FloatObject添加到FloatBackground/add FloatObject into FloatBackground
 ```
 FloatBackground floatBackground = (FloatBackground) this.findViewById(R.id.float_view);
 floatBackground.addFloatView(new FloatText( 0.3f, 0.6f, "E"));
+```
+
+#### startFloat
+播放悬浮动画，start floating animation
+```
+floatBackground.startFloat();
+```
+
+#### endFloat
+结束悬浮动画，end floating anmiation
+```
+floatBackground.endFloat();
 ```
 
 ## License
