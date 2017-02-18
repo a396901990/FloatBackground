@@ -9,14 +9,6 @@ import com.dean.library.FloatBackground;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final float[][] STAR_LOCATION = new float[][]{
-            {0.5f, 0.2f}, {0.68f, 0.35f}, {0.5f, 0.05f},
-            {0.15f, 0.15f}, {0.5f, 0.5f}, {0.15f, 0.8f},
-            {0.2f, 0.3f}, {0.77f, 0.4f}, {0.75f, 0.5f},
-            {0.8f, 0.55f}, {0.9f, 0.6f}, {0.1f, 0.7f},
-            {0.1f, 0.1f}, {0.7f, 0.8f}, {0.5f, 0.6f}
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        floatBackground.addFloatView(new FloatRect(0.2f, 0.3f, 30, 40));
-        floatBackground.addFloatView(new FloatRect(0.9f, 0.3f, 140, 30));
         floatBackground.addFloatView(new FloatRect(0.1f, 0.1f, 170, 30));
         floatBackground.addFloatView(new FloatBitmap( this, 0.2f, 0.3f, R.drawable.gr_ptn_03));
         floatBackground.addFloatView(new FloatBitmap( this, 0.8f, 0.3f, R.drawable.ico_setting));
