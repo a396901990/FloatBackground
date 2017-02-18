@@ -68,40 +68,11 @@ public class FloatText extends FloatObject {
 }
 ```
 
-#### 使用
+#### 将FloatObject添加到FloatBackground
 ```
 FloatBackground floatBackground = (FloatBackground) this.findViewById(R.id.float_view);
 floatBackground.addFloatView(new FloatText( 0.3f, 0.6f, "E"));
 ```
-
-####设置颜色 Setting Color
-#####xml
-
-```xml
-app:view_color="@color/light_orange"
-```
-#####code
-```java
-loadingView.setColor(Color.GRAY);
-```
-
-####开始／结束／暂停／恢复 start/end/pause/resume
-#####开始/start
-```java
-loadingView.start();
-``` 
-#####结束/end
-```java
-loadingView.end();
-``` 
-#####暂停/pause
-```java
-loadingView.pause();
-``` 
-#####恢复/resume
-```java
-loadingView.resume();
-``` 
 
 ## License
 ```
