@@ -13,25 +13,65 @@ Floating item in background, support text, iamge, custom view
 *  或者将[library](/library)中的`FloatBackground.java`，`FloatObject.java`复制到你的项目中去 // Or copy `FloatBackground.java `,`FloatObject.java` from [library](/library) to your project
 
 ## 使用 Usage
-####初始化 Initialization
-添加`com.dean.overwatchloadingview.OverWatchLoadingView ` 到你的布局文件中  
-Add `com.dean.overwatchloadingview.OverWatchLoadingView ` to your layout XML file.
+#### FloatBackground
+FloatBackground继承自FrameLayout，在使用时添加`FloatBackground` 到你的布局文件中，并作为最底层的ViewGroup，这样在其之上的视图都可以以FloatBackground为一层背景显示浮动动画。
+
+FloatBackground is inhert from FrameLayout, add `FloatBackground` to your layout XML file, and set it in the lowest layer in your layout.
 
 ```XML
-<com.dean.overwatchloadingview.OverWatchLoadingView
-        android:layout_centerInParent="true"
-        android:layout_margin="50dp"
-        android:id="@+id/loading_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:view_color="@color/light_orange" />
-```
-之后在代码中调用  
-Then using in java code
+<com.dean.library.FloatBackground
+        android:id="@+id/float_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-```Java
-OverWatchLoadingView loadingView = (OverWatchLoadingView) findViewById(R.id.loading_view);
-loadingView.start();
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Start" />
+
+            <Button
+                android:id="@+id/end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="End" />
+        </LinearLayout>
+    </com.dean.library.FloatBackground>
+```
+
+#### FloatObject  
+漂浮对象，初始化漂浮对象，继承FloatObject，并重写drawFloatObject方法。
+```
+public class FloatText extends FloatObject {
+    String text;
+
+    public FloatText(float posX, float posY, String text) {
+        super(posX, posY);
+        this.text = text;
+        setAlpha(88);
+        setColor(Color.WHITE);
+    }
+
+    @Override
+    public void drawFloatObject(Canvas canvas, float x, float y, Paint paint) {
+        paint.setTextSize(65);
+        canvas.drawText(text, x, y, paint);
+    }
+}
+```
+
+#### 使用
+```
+FloatBackground floatBackground = (FloatBackground) this.findViewById(R.id.float_view);
+floatBackground.addFloatView(new FloatText( 0.3f, 0.6f, "E"));
 ```
 
 ####设置颜色 Setting Color
